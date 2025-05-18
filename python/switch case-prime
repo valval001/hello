@@ -13,3 +13,19 @@ match(choice):
         print("You have selected Kabab")
     case _:
         print("Invalid choice")
+
+PRIME NUMBER
+
+num=int(input("Enter a number: "))
+
+i=2
+if num<2:
+    print("Number is not prime")
+    exit()
+while i<num:
+    if num%i==0:
+        print("Number is not prime")
+        break
+    i=i+1
+else:
+    print("Number is prime")
