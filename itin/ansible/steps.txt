@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt install ansible -y
+sudo locale-gen en_In.UTF-8
+sudo update-locale
+ssh-keygen -t rsa
+COPY THE PUBLIC KEY TO CLIENT AUTHORISED KEYS
+ansible-playbook -i inventory.ini installapache2.yml
