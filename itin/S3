@@ -1,0 +1,27 @@
+CREATE A S3 Bucket
+CREATE A FILE.HTML file 
+
+upload the file in the bucket
+go to properties --> enable static hosting
+go to permissions --> edit group policies
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::Bucket-Name/*"
+            ]
+        }
+    ]
+} 
+
+
+save exit
+
