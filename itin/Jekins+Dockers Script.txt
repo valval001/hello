@@ -1,0 +1,48 @@
+pwd
+ls -l
+
+docker ps -a | grep "myserver" && docker stop myserver && docker rm myserver 
+docker images | grep "ditisspriyanshu/ditiss" && docker rmi -f ditisspriyanshu/ditiss
+
+docker login -u ditisspriyanshu -p $password
+echo "Building image"
+docker build -t ditisspriyanshu/ditiss .
+
+docker push ditisspriyanshu/ditiss
+echo "Running image"
+docker run --name myserver -d -p 80:80 ditisspriyanshu/ditiss
+echo "Image running"
+
+sleep 15
+
+ssh admin@172.31.2.226 'docker ps -a | grep "myserver" && docker stop myserver && docker rm myserver && docker rmi ditisspriyanshu/ditiss'
+ssh admin@172.31.2.226 'docker run --name myserver -d -p 80:80  ditisspriyanshu/ditiss'
+echo "Done webserver"
+
+
+
+
+
+
+
+ssh admin@172.31.2.226 'docker ps -a | grep "myserver" && docker stop myserver && docker rm myserver && docker rmi ditisspriyanshu/ditiss; docker run --name myserver -d -p 80:80  ditisspriyanshu/ditiss'
+
+
+
+######################################################################################
+
+# With Docker Swarm
+
+pwd
+#Jenkins Machine
+docker ps -a | grep "myserver" && docker stop myserver && docker rm myserver
+docker images | grep "ditisspriyanshu/tinku" && docker rmi -f ditisspriyanshu/tinku:latest
+
+docker build -t ditisspriyanshu/tinku:latest .
+docker login -u ditisspriyanshu -p 25258202Pr
+docker push ditisspriyanshu/tinku:latest
+sleep 15
+docker run --name myserver -d -p 80:80 ditisspriyanshu/tinku:latest
+
+#DockerSwarm
+ssh admin@172.31.86.47 'docker service ls | grep "myservice" && docker service rm myservice && sleep 10 && docker rmi -f ditisspriyanshu/tinku:latest; docker service create --name myservice -d -p 80:80 --replicas=3 ditisspriyanshu/tinku:latest'
