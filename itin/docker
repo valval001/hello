@@ -1,10 +1,15 @@
 DOCKER 
 
+docker login -u <docker username> -p <password>
 docker build -t <public image name> .
+docker push <image name>
 docker run --name <private image name> -p <ports> -d <public image name>
+
+docker pull <image name>
 
 DOCKER SWARM
 
+docker swarm init
 docker service run --name <private image name> -p <ports> -d <public image name>
 docker service scale webserver=2
 
