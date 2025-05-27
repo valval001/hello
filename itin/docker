@@ -10,6 +10,6 @@ docker pull <image name>
 DOCKER SWARM
 
 docker swarm init
-docker service run --name <private image name> -p <ports> -d <public image name>
+docker service create --name <private image name> -p <ports> -d <public image name>
 docker service scale webserver=2
 
