@@ -11,5 +11,5 @@ DOCKER SWARM
 
 docker swarm init
 docker service create --name <private image name> -p <ports> -d <public image name>
-docker service scale webserver=2
+docker service scale image name=2
 
