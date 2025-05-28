@@ -1,0 +1,70 @@
+Ques1.
+
+PART A
+
+sudo apt update
+sudo apt install git -y
+
+mkdir IACSD
+cd IACSD
+
+git init
+nano <your name>
+git add .
+git config --global user.email "your.email@example.com"
+git config --global user.name "your name"
+git commit -m 'first'
+git remote add origin '<ssh-link>'
+ssh-keygen -t rsa
+COPY THE PUBLIC KEY, PASTE IN DEPLOY KEY IN GITHUB
+git push origin master
+
+PART B
+
+USE JENKINS.SH FROM MY GIT
+chmod u+x filename
+./filename
+
+systemctl status jenkins
+
+USE PUBLIC IP:8080            (DONT FORGET TO SET SECURITY TO ALL TRAFIC)
+CREATE A WEBHOOK
+JEKNKINS SHELL SCRIPT ME ADD ANY COMMAND
+
+
+
+
+QUES.2
+
+sudo apt install docker.io -y
+sudo usermod admin -aG docker
+DUPLICATE SESSION
+mkdir exam
+cd exam
+nano index.html
+nano Dockerfile ---> 
+              FROM httpd
+              COPY * /usr/local/apache2/htdocs/
+
+docker build -t web5 .
+docker run --name web5 -d -p 8000:80 web5:latest
+
+TO UPDATE THE INDEX FILE RUN THE COMMAND BELOW
+CHANGE THE CONTAINER ID WITH YOUR CONTAINER ID -- TO CHECK RUN DOCKER PS
+
+docker cp index.html <container-id>:/usr/local/apache2/htdocs/
+
+then refresh the link in your chrome
+
+QUES.3
+
+H = int(input("ENTER THE HEIGHT: "))
+W = int(input("ENTER THE WIDTH: "))
+A = H*W
+
+if H >= 0 and W >=0:
+    print("Area of the rectangle is ",A)
+else:
+    print("INVALID INOUT")
+
+
